@@ -9,7 +9,14 @@ public class Game : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(RestClient.Instance.Get(WEB_URL, GetPlayers));
+        //  StartCoroutine(RestClient.Instance.Get(WEB_URL, GetPlayers));
+
+        StartCoroutine(RestClient.Instance.Post(WEB_URL, new Player
+        {
+            id = 5,
+            fullname = "Thomas Shelby",
+            score = 69
+        }, GetPlayers));
     }
 
     void GetPlayers( PlayerList playerList)
